@@ -53,5 +53,15 @@
 
             return null;
         }
+
+        public static int FindMaximumElement(int[] arr, int number)
+        {
+            if (number == 1)
+            {
+                return arr[0];
+            }
+
+            return Math.Max(arr[number - 1], FindMaximumElement(arr, number - 1));
+        }
     }
 }
