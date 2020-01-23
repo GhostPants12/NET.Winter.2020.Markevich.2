@@ -54,14 +54,39 @@
             return null;
         }
 
-        public static int FindMaximumElement(int[] arr, int number)
+        /// <summary>Finds the maximum element of an array.</summary>
+        /// <param name="arr">The array.</param>
+        /// <returns>Maximum element of the array.</returns>
+        /// <exception cref="ArgumentNullException">Argument is null.</exception>
+        /// <exception cref="ArgumentException">Array is empty.</exception>
+        public static int FindMaximumElement(int[] arr)
         {
-            if (number == 1)
+            if (arr == null)
             {
-                return arr[0];
+                throw new ArgumentNullException("Argument is null.");
             }
 
-            return Math.Max(arr[number - 1], FindMaximumElement(arr, number - 1));
+            if (arr.Length == 0)
+            {
+                throw new ArgumentException("Array is empty.");
+            }
+
+            return MaximumInRange(arr, 0, arr.Length - 1);
+        }
+
+        private static int MaximumInRange(int[] arr, int leftNumber, int rightNumber)
+        {
+            if (leftNumber == rightNumber)
+            {
+                return arr[rightNumber];
+            }
+            else
+            {
+                int leftBuff = MaximumInRange(arr, leftNumber, (leftNumber + rightNumber) / 2);
+                int rightBuff = MaximumInRange(arr, ((leftNumber + rightNumber) / 2) + 1, rightNumber);
+
+                return Math.Max(leftBuff, rightBuff);
+            }
         }
     }
 }
