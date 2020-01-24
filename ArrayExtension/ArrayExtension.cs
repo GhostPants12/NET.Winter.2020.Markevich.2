@@ -29,8 +29,8 @@
                 return null;
             }
 
-            int sumBeforeElement;
-            int sumAfterElement;
+            long sumBeforeElement;
+            long sumAfterElement;
             for (int i = 1; i < arr.Length - 1; i++)
             {
                 sumBeforeElement = 0;

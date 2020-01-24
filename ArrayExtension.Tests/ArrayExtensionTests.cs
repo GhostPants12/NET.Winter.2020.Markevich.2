@@ -13,6 +13,7 @@ namespace ArrayExtension.Tests
         [TestCase(new int[3] { 0, 0, 0 }, ExpectedResult = 1)]
         [TestCase(new int[1] { 1 }, ExpectedResult = null)]
         [TestCase(new int[3] { 0,0,1 }, ExpectedResult = null)]
+        [TestCase(new int[3] { int.MaxValue, int.MaxValue, int.MaxValue}, ExpectedResult =1 )]
         public int? FindBalanceIndex_WithAllValidParameters(int[] arr) =>
             FindBalanceIndex(arr);
 
